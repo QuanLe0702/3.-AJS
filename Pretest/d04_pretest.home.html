@@ -3,8 +3,6 @@
 
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="pretest.css">
-
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 </head>
@@ -34,11 +32,11 @@
             app.config(function ($routeProvider) {
                 $routeProvider
                     .when("/food", {
-                        templateUrl: "d04_food.html"
+                        templateUrl: "d04.food.html"
                     })
                     .when("/add", {
-                        templateUrl: "d04_add.html", 
-                        controller:"addCTR"
+                        templateUrl: "d04_add.html",
+                        controller: "addCTR"
                     })
 
             });
@@ -50,6 +48,13 @@
                     $scope.ds = response.data;
                     console.log($scope.ds)
                 });
+
+                $scope.remove = function (index) {
+                    if (confirm('are u sure ?')) {
+                        $scope.ds.splice(index, 1)
+                    }
+
+                }
             });
 
 

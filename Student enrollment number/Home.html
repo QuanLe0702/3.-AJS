@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <div class="container" ng-controller="mainCTR">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th><a href="#!employee">Employee</a></th>
+                    <th><a href="#!addnewemployee">Add New Employee</a></th>
+                </tr>
+            </thead>
+        </table>
+
+        <div ng-view></div>
+
+        </div>
+
+        <script>
+            var app = angular.module("myApp", ["ngRoute"]);
+            app.config(function ($routeProvider) {
+                $routeProvider
+                    .when("/employee", {
+                        templateUrl: "Employee.html"
+                    })
+                    .when("/addnewemployee", {
+                        templateUrl: "ANE.html",
+                        controller: "addCTR"
+                    })
+
+            });
+
+            app.controller('mainCTR', function ($scope, $http) {
+                $http.get("Employee.json").then(function (response) {
+                    $scope.ds = response.data;
+                    console.log($scope.ds)
+                });
+
+                $scope.remove = function (index) {
+                    if (confirm('Are you sure you want to delete this employee?')) {
+                        $scope.ds.splice(index, 1)
+                    }
+
+                }
+            });
+
+            app.controller('addCTR', function ($scope) {
+                $scope.addRow = function () {
+                    $scope.ds.push({ "Name": $scope.name, "Department": $scope.department, "Email": $scope.email });
+
+                    alert("Add new employee successfully!!!");
+                }
+
+            });
+
+        </script>
+
+
+    </div>
+</body>
+
+</html>

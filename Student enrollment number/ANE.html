@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Add New Name</h3>
+            <form name="myForm" ng-submit="addRow();">
+                <div class="form-group">
+                    <label for="">Name: </label>
+                    <input type="text" name="name" ng-model="name" required class="form-control">
+
+                    <span class="error" ng-show="myForm.name.$error.required" style="color: red;"> Name is Required.</span> <br>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Department: </label>
+                    <input type="text" name="department" ng-model="department" required class="form-control">
+
+                    <span class="error" ng-show="myForm.department.$error.required" style="color: red;"> Department is Required.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Email: </label>
+                    <input type="email" name="email" ng-model="email" required class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" touch>
+
+                    <span class="error" ng-show="myForm.email.$error.required" style="color: red;">Email is Required.</span> <br>
+                    
+                    <span class="error" ng-show="myForm.email.$invalid" style="color: red;" >Invalid email address</span>
+                </div class="form-group">
+
+                <div>
+                    <input type="submit" value="Add" class="btn btn-danger"
+                        ng-disabled="!myForm.$dirty || (myForm.$dirty && myForm.$invalid)">
+
+                </div>
+            </form>
+        </div>
+
+
+    </div>

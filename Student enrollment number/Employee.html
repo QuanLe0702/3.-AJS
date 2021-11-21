@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <p><b>Enter name to search : </b><input type="text" ng-model='Employee' ></p>
+            
+            <table class="table table-bordered table-hover" >
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in ds|filter:Employee">
+                        <td>{{x.Name}}</td>
+                        <td>{{x.Department}}</td>
+                        <td>{{x.Email}}</td>
+                        <td><input type="button" value="Delete" ng-click="remove($index)"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

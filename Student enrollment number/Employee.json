@@ -1,0 +1,17 @@
+[
+    {
+        "Name": "Mary",
+        "Department": "Account",
+        "Email": "mary@gmail.com"
+    },
+    {
+        "Name": "John",
+        "Department": "HR",
+        "Email": "john@yahoo.com"
+    },
+    {
+        "Name": "Rob",
+        "Department": "Admin",
+        "Email": "rob@gmail.com"
+    }
+]
